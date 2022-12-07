@@ -30,9 +30,7 @@ class Murid extends CI_Controller
             redirect("murid");
         }
         $data["title"] = "Tambah Murid";
-        $this->load->view('header', $data);
-        $this->load->view('murid/add', $data);
-        $this->load->view('footer');
+        $this->template->load('template', 'murid/add', $data);
     }
 
     public function edit($id = null)
@@ -52,13 +50,10 @@ class Murid extends CI_Controller
             } else {
                 $data["title"] = "Edit Murid";
                 $data["murid"] = $murid->edit($id);
-
                 if (!$data["murid"]) {
                     show_404();
                 } else {
-                    $this->load->view('header', $data);
-                    $this->load->view('murid/edit', $data);
-                    $this->load->view('footer');
+                    $this->template->load('template', 'murid/edit', $data);
                 }
             }
         }
