@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Murid extends CI_Controller
+class Salur extends CI_Controller
 {
     public function __construct()
     {
@@ -9,51 +9,52 @@ class Murid extends CI_Controller
         if (!$this->session->userdata('email')) {
             redirect('login');
         }
-        $this->load->model("Murid_model");
+        $this->load->model(["Salur_model", "Mustahik_model"]);
     }
 
     public function index()
     {
-        $data["title"] = "Data Murid";
-        $data["murid"] = $this->Murid_model->get();
-        $this->template->load('template', 'murid/index', $data);
+        $data["title"] = "Data Penyaluran";
+        $data["salur"] = $this->Salur_model->get_join();
+        $this->template->load('template', 'salur/index', $data);
     }
 
     public function add()
     {
-        $murid = $this->Murid_model;
+        $salur = $this->Salur_model;
         $validation = $this->form_validation;
-        $validation->set_rules($murid->rules());
+        $validation->set_rules($salur->rules());
         if ($validation->run()) {
-            $murid->store();
+            $salur->store();
             $this->session->set_flashdata('message', '<script> alert("Data Berhasil Disimpan"); </script>');
-            redirect("murid");
+            redirect("salur");
         }
-        $data["title"] = "Tambah Murid";
-        $this->template->load('template', 'murid/add', $data);
+        $data["title"] = "Tambah Penyaluran";
+        $data["mustahik"] = $this->Mustahik_model->get();
+        $this->template->load('template', 'salur/add', $data);
     }
 
     public function edit($id = null)
     {
         if ($id == null) {
-            // redirect('murid');
+            // redirect('salur');
             show_404();
         } else {
-            $murid = $this->Murid_model;
+            $salur = $this->Salur_model;
             $validation = $this->form_validation;
-            $validation->set_rules($murid->rules());
-
+            $validation->set_rules($salur->rules());
             if ($validation->run()) {
-                $murid->update($id);
+                $salur->update($id);
                 $this->session->set_flashdata('message', '<script> alert("Data Berhasil Diupdate"); </script>');
-                redirect("murid");
+                redirect("salur");
             } else {
-                $data["title"] = "Edit Murid";
-                $data["murid"] = $murid->edit($id);
-                if (!$data["murid"]) {
+                $data["title"] = "Edit Penyaluran";
+                $data["salur"] = $salur->edit($id);
+                $data["mustahik"] = $this->Mustahik_model->get();
+                if (!$data["salur"]) {
                     show_404();
                 } else {
-                    $this->template->load('template', 'murid/edit', $data);
+                    $this->template->load('template', 'salur/edit', $data);
                 }
             }
         }
@@ -64,9 +65,9 @@ class Murid extends CI_Controller
         if ($id == null) {
             show_404();
         } else {
-            $this->Murid_model->destroy($id);
+            $this->Salur_model->destroy($id);
             $this->session->set_flashdata('message', '<script> alert("Data Berhasil Dihapus"); </script>');
-            redirect("murid");
+            redirect("salur");
         }
     }
 }

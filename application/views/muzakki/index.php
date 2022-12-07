@@ -21,7 +21,7 @@
                     <td><?= $data->alamat_muzakki ?></td>
                     <td><?= $data->ket_muzakki ?></td>
                     <td class="text-center">
-                        <a href="<?= base_url('muzakki/edit/' . $data->id_muzakki) ?>" class="btn btn-warning btn-sm">Edit</a>
+                        <a href="<?= base_url('muzakki/edit/' . $data->id_muzakki) ?>" class="btn btn-info btn-sm">Edit</a>
                         <a href="<?= base_url('muzakki/destroy/' . $data->id_muzakki) ?>" class="btn btn-danger btn-sm" onclick="return confirm('Delete Data?');">Delete</a>
                     </td>
                 </tr>

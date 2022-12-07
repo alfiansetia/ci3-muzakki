@@ -9,7 +9,7 @@ class Terima extends CI_Controller
         if (!$this->session->userdata('email')) {
             redirect('login');
         }
-        $this->load->model("Terima_model");
+        $this->load->model(["Terima_model", "Muzakki_model"]);
     }
 
     public function index()
@@ -30,6 +30,7 @@ class Terima extends CI_Controller
             redirect("terima");
         }
         $data["title"] = "Tambah Penerimaan";
+        $data["muzakki"] = $this->Muzakki_model->get();
         $this->template->load('template', 'terima/add', $data);
     }
 
@@ -49,6 +50,7 @@ class Terima extends CI_Controller
             } else {
                 $data["title"] = "Edit Penerimaan";
                 $data["terima"] = $terima->edit($id);
+                $data["muzakki"] = $this->Muzakki_model->get();
                 if (!$data["terima"]) {
                     show_404();
                 } else {

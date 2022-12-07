@@ -1,16 +1,16 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class Terima_model extends CI_Model
+class Salur_model extends CI_Model
 {
 
-    private $table = "terima";
+    private $table = "salur";
 
     public function rules()
     {
         return [
             [
-                'field' => 'muzakki',
-                'label' => 'Muzakki',
+                'field' => 'mustahik',
+                'label' => 'Mustahik',
                 'rules' => 'trim|required'
             ],
             [
@@ -33,6 +33,11 @@ class Terima_model extends CI_Model
                 'label' => 'Keterangan',
                 'rules' => 'trim'
             ],
+            [
+                'field' => 'validasi',
+                'label' => 'Validasi',
+                'rules' => 'trim|required'
+            ],
         ];
     }
 
@@ -41,28 +46,30 @@ class Terima_model extends CI_Model
         return $this->db->get($this->table)->result();
     }
 
-    public function get_join(){
+    public function get_join()
+    {
         $this->db->select('*');
         $this->db->from($this->table);
-        $this->db->join('muzakki', 'muzakki.id_muzakki = terima.id_muzakki', 'left');
+        $this->db->join('mustahik', 'mustahik.id_mustahik = salur.id_mustahik', 'left');
         $query = $this->db->get()->result();
         return $query;
     }
 
     public function edit($id)
     {
-        return $this->db->get_where($this->table, ["id_terima" => $id])->row();
+        return $this->db->get_where($this->table, ["id_salur" => $id])->row();
     }
 
     public function store()
     {
         $post = $this->input->post();
         $data = [
-            'id_muzakki'    => $post['muzakki'],
-            'tgl_terima'    => $post['tgl'],
-            'total_terima'  => $post['total'],
-            'jenis_terima'  => $post['jenis'],
-            'ket_terima'    => $post['keterangan'],
+            'id_mustahik'       => $post['mustahik'],
+            'tgl_salur'         => $post['tgl'],
+            'total_salur'       => $post['total'],
+            'jenis_salur'       => $post['jenis'],
+            'ket_salur'         => $post['keterangan'],
+            'validasi_salur'    => $post['validasi'],
         ];
         return $this->db->insert($this->table, $data);
     }
@@ -71,17 +78,18 @@ class Terima_model extends CI_Model
     {
         $post = $this->input->post();
         $data = [
-            'id_muzakki'    => $post['muzakki'],
-            'tgl_terima'    => $post['tgl'],
-            'total_terima'  => $post['total'],
-            'jenis_terima'  => $post['jenis'],
-            'ket_terima'    => $post['keterangan'],
+            'id_mustahik'       => $post['mustahik'],
+            'tgl_salur'         => $post['tgl'],
+            'total_salur'       => $post['total'],
+            'jenis_salur'       => $post['jenis'],
+            'ket_salur'         => $post['keterangan'],
+            'validasi_salur'    => $post['validasi'],
         ];
-        return $this->db->update($this->table, $data, ['id_terima' => $id]);
+        return $this->db->update($this->table, $data, ['id_salur' => $id]);
     }
 
     public function destroy($id)
     {
-        return $this->db->delete($this->table, ['id_terima' => $id]);
+        return $this->db->delete($this->table, ['id_salur' => $id]);
     }
 }
