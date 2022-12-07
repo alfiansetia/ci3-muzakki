@@ -1,9 +1,9 @@
 <?php defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dosen_model extends CI_Model
+class Mustahik_model extends CI_Model
 {
 
-    private $table = "dosen";
+    private $table = "mustahik";
 
     public function rules()
     {
@@ -14,14 +14,14 @@ class Dosen_model extends CI_Model
                 'rules' => 'trim|required'
             ],
             [
-                'field' => 'nip',
-                'label' => 'NIP',
-                'rules' => 'trim|required'
-            ],
-            [
                 'field' => 'alamat',
                 'label' => 'Alamat',
-                'rules' => 'trim|required'
+                'rules' => 'trim'
+            ],
+            [
+                'field' => 'keterangan',
+                'label' => 'Keterangan',
+                'rules' => 'trim'
             ],
         ];
     }
@@ -33,16 +33,16 @@ class Dosen_model extends CI_Model
 
     public function edit($id)
     {
-        return $this->db->get_where($this->table, ["id" => $id])->row();
+        return $this->db->get_where($this->table, ["id_mustahik" => $id])->row();
     }
 
     public function store()
     {
         $post = $this->input->post();
         $data = [
-            'nama'      => $post['nama'],
-            'nip'       => $post['nip'],
-            'alamat'    => $post['alamat'],
+            'nama_mustahik'   => $post['nama'],
+            'alamat_mustahik' => $post['alamat'],
+            'ket_mustahik'    => $post['keterangan'],
         ];
         return $this->db->insert($this->table, $data);
     }
@@ -51,15 +51,15 @@ class Dosen_model extends CI_Model
     {
         $post = $this->input->post();
         $data = [
-            'nama'      => $post['nama'],
-            'nip'       => $post['nip'],
-            'alamat'    => $post['alamat'],
+            'nama_mustahik'   => $post['nama'],
+            'alamat_mustahik' => $post['alamat'],
+            'ket_mustahik'    => $post['keterangan'],
         ];
-        return $this->db->update($this->table, $data, ['id' => $id]);
+        return $this->db->update($this->table, $data, ['id_mustahik' => $id]);
     }
 
     public function destroy($id)
     {
-        return $this->db->delete($this->table, ['id' => $id]);
+        return $this->db->delete($this->table, ['id_mustahik' => $id]);
     }
 }

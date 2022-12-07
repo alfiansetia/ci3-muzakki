@@ -12,8 +12,11 @@
             <li class="nav-item <?= $title == 'Data Murid' ? 'active' : '' ?>">
                 <a class="nav-link" href="<?= base_url('murid'); ?>">Murid</a>
             </li>
-            <li class="nav-item <?= $title == 'Data Dosen' ? 'active' : '' ?>">
-                <a class="nav-link" href="<?= base_url('dosen'); ?>">Dosen</a>
+            <li class="nav-item <?= $title == 'Data Muzakki' ? 'active' : '' ?>">
+                <a class="nav-link" href="<?= base_url('muzakki'); ?>">Muzakki</a>
+            </li>
+            <li class="nav-item <?= $title == 'Data Mustahik' ? 'active' : '' ?>">
+                <a class="nav-link" href="<?= base_url('mustahik'); ?>">Mustahik</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('login/logout'); ?>" onclick="return confirm('Apakah yakin ingin logout ?');">Logout</a>

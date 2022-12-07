@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dosen extends CI_Controller
+class Mustahik extends CI_Controller
 {
     public function __construct()
     {
@@ -9,56 +9,50 @@ class Dosen extends CI_Controller
         if (!$this->session->userdata('email')) {
             redirect('login');
         }
-        $this->load->model("Dosen_model");
+        $this->load->model("Mustahik_model");
     }
 
     public function index()
     {
-        $data["title"] = "Data Dosen";
-        $data["dosen"] = $this->Dosen_model->get();
-        $this->load->view('header', $data);
-        $this->load->view('dosen/index', $data);
-        $this->load->view('footer');
+        $data["title"] = "Data Mustahik";
+        $data["mustahik"] = $this->Mustahik_model->get();
+        $this->template->load('template', 'mustahik/index', $data);
     }
 
     public function add()
     {
-        $dosen = $this->Dosen_model;
+        $mustahik = $this->Mustahik_model;
         $validation = $this->form_validation;
-        $validation->set_rules($dosen->rules());
+        $validation->set_rules($mustahik->rules());
         if ($validation->run()) {
-            $dosen->store();
+            $mustahik->store();
             $this->session->set_flashdata('message', '<script> alert("Data Berhasil Disimpan"); </script>');
-            redirect("dosen");
+            redirect("mustahik");
         }
-        $data["title"] = "Tambah Dosen";
-        $this->load->view('header', $data);
-        $this->load->view('dosen/add', $data);
-        $this->load->view('footer');
+        $data["title"] = "Tambah Mustahik";
+        $this->template->load('template', 'mustahik/add', $data);
     }
 
     public function edit($id = null)
     {
         if ($id == null) {
-            // redirect('dosen');
+            // redirect('mustahik');
             show_404();
         } else {
-            $dosen = $this->Dosen_model;
+            $mustahik = $this->Mustahik_model;
             $validation = $this->form_validation;
-            $validation->set_rules($dosen->rules());
+            $validation->set_rules($mustahik->rules());
             if ($validation->run()) {
-                $dosen->update($id);
+                $mustahik->update($id);
                 $this->session->set_flashdata('message', '<script> alert("Data Berhasil Diupdate"); </script>');
-                redirect("dosen");
+                redirect("mustahik");
             } else {
-                $data["title"] = "Edit Dosen";
-                $data["dosen"] = $dosen->edit($id);
-                if (!$data["dosen"]) {
+                $data["title"] = "Edit mustahik";
+                $data["mustahik"] = $mustahik->edit($id);
+                if (!$data["mustahik"]) {
                     show_404();
                 } else {
-                    $this->load->view('header', $data);
-                    $this->load->view('dosen/edit', $data);
-                    $this->load->view('footer');
+                    $this->template->load('template', 'mustahik/edit', $data);
                 }
             }
         }
@@ -69,9 +63,9 @@ class Dosen extends CI_Controller
         if ($id == null) {
             show_404();
         } else {
-            $this->Dosen_model->destroy($id);
+            $this->Mustahik_model->destroy($id);
             $this->session->set_flashdata('message', '<script> alert("Data Berhasil Dihapus"); </script>');
-            redirect("dosen");
+            redirect("mustahik");
         }
     }
 }
