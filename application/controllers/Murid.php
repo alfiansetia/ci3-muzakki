@@ -16,9 +16,7 @@ class Murid extends CI_Controller
     {
         $data["title"] = "Data Murid";
         $data["murid"] = $this->Murid_model->get();
-        $this->load->view('header', $data);
-        $this->load->view('murid/index', $data);
-        $this->load->view('footer');
+        $this->template->load('template', 'murid/index', $data);
     }
 
     public function add()
