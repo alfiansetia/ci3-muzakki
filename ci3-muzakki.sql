@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Waktu pembuatan: 07 Des 2022 pada 23.08
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 08 Des 2022 pada 00.35
 -- Versi server: 10.4.21-MariaDB
--- Versi PHP: 8.1.6
+-- Versi PHP: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -63,8 +63,13 @@ CREATE TABLE `mustahik` (
 --
 
 INSERT INTO `mustahik` (`id_mustahik`, `nama_mustahik`, `alamat_mustahik`, `ket_mustahik`) VALUES
-(1, 'kjlglgjhl', '', ''),
-(2, 'kl;j;kl', 'kjbhkbk', '');
+(1, 'kjlglgjhl', 'sdfgsd', ''),
+(3, 'dfgerger', 'eryherher', 'erhre'),
+(4, 'erherher', 'erherh', 'erherh'),
+(5, 'hehrher', 'rehre', 'herh'),
+(6, 'herher', 'rehre', 'rehr'),
+(7, 'herherh', '', ''),
+(8, 'erherh', '', 'erher');
 
 -- --------------------------------------------------------
 
@@ -86,7 +91,12 @@ CREATE TABLE `muzakki` (
 INSERT INTO `muzakki` (`id_muzakki`, `nama_muzakki`, `alamat_muzakki`, `ket_muzakki`) VALUES
 (1, 'gegewg', 'hryhasD', 'FHTRYTJT'),
 (2, 'js,fghljsd', 'askndbsjalkdu', 'asdlf;has;iof'),
-(3, 'd,jsvfhjsdf', 'sakl;djfiaso;', 'safoasfh');
+(6, 'erhreh', '', ''),
+(7, 'ehrreher', 'hreh', 'erher'),
+(8, 'tyj', 'rthewwg', 'rggher'),
+(9, 'rehre', 'erhre', 'hreherh'),
+(10, 'ryutyi', 'iutweew', 'weweqw'),
+(11, 'ewrweew', 'wetsdfdsfg', 'trjurj');
 
 -- --------------------------------------------------------
 
@@ -103,6 +113,13 @@ CREATE TABLE `salur` (
   `ket_salur` varchar(100) DEFAULT NULL,
   `validasi_salur` enum('ya','tidak') NOT NULL DEFAULT 'tidak'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `salur`
+--
+
+INSERT INTO `salur` (`id_salur`, `id_mustahik`, `tgl_salur`, `total_salur`, `jenis_salur`, `ket_salur`, `validasi_salur`) VALUES
+(3, 1, '2022-12-10', 45662, 'Riqab', 'ok', 'ya');
 
 -- --------------------------------------------------------
 
@@ -124,7 +141,8 @@ CREATE TABLE `terima` (
 --
 
 INSERT INTO `terima` (`id_terima`, `id_muzakki`, `tgl_terima`, `total_terima`, `jenis_terima`, `ket_terima`) VALUES
-(1, 1, '2022-12-07', 100000, NULL, NULL);
+(1, 1, '2022-12-07', 100000, NULL, NULL),
+(2, 1, '2022-12-08', 100000, 'Zakat Fitrah', '');
 
 -- --------------------------------------------------------
 
@@ -203,25 +221,25 @@ ALTER TABLE `murid`
 -- AUTO_INCREMENT untuk tabel `mustahik`
 --
 ALTER TABLE `mustahik`
-  MODIFY `id_mustahik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_mustahik` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `muzakki`
 --
 ALTER TABLE `muzakki`
-  MODIFY `id_muzakki` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_muzakki` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `salur`
 --
 ALTER TABLE `salur`
-  MODIFY `id_salur` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_salur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `terima`
 --
 ALTER TABLE `terima`
-  MODIFY `id_terima` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_terima` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
