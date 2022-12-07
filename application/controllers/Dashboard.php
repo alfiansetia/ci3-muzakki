@@ -15,12 +15,10 @@ class Dashboard extends CI_Controller
     public function index()
     {
         $data['title'] = 'Dashboard';
-        $this->load->view('header', $data);
-        if ($this->session->userdata('role') == 1) {
-            $this->load->view('dashboard/admin', $data);
+        if ($this->session->userdata('role') == 'admin') {
+            $this->template->load('template','dashboard/admin', $data);
         } else {
-            $this->load->view('dashboard/user', $data);
+            $this->template->load('template','dashboard/user', $data);
         }
-        $this->load->view('footer', $data);
     }
 }

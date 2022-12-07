@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/Bootstrap-4-4.6.0/css/bootstrap.min.css') ?>" />
 
     <title><?= $title ?></title>
 </head>
@@ -22,12 +22,12 @@
                 <form method="POST" action="<?= base_url('login') ?>">
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" name="email" class="form-control" id="email" value="<?= set_value('email') ?>" autofocus>
+                        <input type="email" name="email" class="form-control" id="email" placeholder="Masukkan Email" value="<?= set_value('email') ?>" autofocus>
                         <small class="form-text text-danger"><?php echo form_error('email') ?></small>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" name="password" class="form-control" id="password" value="<?= set_value('password') ?>">
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Masukkan Password" value="<?= set_value('password') ?>">
                         <small class="form-text text-danger"><?php echo form_error('password') ?></small>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -38,8 +38,9 @@
 
     <!-- Optional JavaScript; choose one of the two! -->
 
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="<?= base_url('assets/js/bootstrap.bundle.min.js') ?>"></script>
+    <script type="text/javascript" src="<?= base_url('assets/jQuery-3.6.0/jquery-3.6.0.min.js') ?>"></script>
+    <script type="text/javascript" src="<?= base_url('assets/Bootstrap-4-4.6.0/js/bootstrap.min.js') ?>"></script>
+
 
 </body>
 
