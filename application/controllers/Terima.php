@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Mustahik extends CI_Controller
+class Terima extends CI_Controller
 {
     public function __construct()
     {
@@ -9,50 +9,50 @@ class Mustahik extends CI_Controller
         if (!$this->session->userdata('email')) {
             redirect('login');
         }
-        $this->load->model("Mustahik_model");
+        $this->load->model("Terima_model");
     }
 
     public function index()
     {
-        $data["title"] = "Data Mustahik";
-        $data["mustahik"] = $this->Mustahik_model->get();
-        $this->template->load('template', 'mustahik/index', $data);
+        $data["title"] = "Data Penerimaan";
+        $data["terima"] = $this->Terima_model->get_join();
+        $this->template->load('template', 'terima/index', $data);
     }
 
     public function add()
     {
-        $mustahik = $this->Mustahik_model;
+        $terima = $this->Terima_model;
         $validation = $this->form_validation;
-        $validation->set_rules($mustahik->rules());
+        $validation->set_rules($terima->rules());
         if ($validation->run()) {
-            $mustahik->store();
+            $terima->store();
             $this->session->set_flashdata('message', '<script> alert("Data Berhasil Disimpan"); </script>');
-            redirect("mustahik");
+            redirect("terima");
         }
-        $data["title"] = "Tambah Mustahik";
-        $this->template->load('template', 'mustahik/add', $data);
+        $data["title"] = "Tambah Penerimaan";
+        $this->template->load('template', 'terima/add', $data);
     }
 
     public function edit($id = null)
     {
         if ($id == null) {
-            // redirect('mustahik');
+            // redirect('terima');
             show_404();
         } else {
-            $mustahik = $this->Mustahik_model;
+            $terima = $this->Terima_model;
             $validation = $this->form_validation;
-            $validation->set_rules($mustahik->rules());
+            $validation->set_rules($terima->rules());
             if ($validation->run()) {
-                $mustahik->update($id);
+                $terima->update($id);
                 $this->session->set_flashdata('message', '<script> alert("Data Berhasil Diupdate"); </script>');
-                redirect("mustahik");
+                redirect("terima");
             } else {
-                $data["title"] = "Edit Mustahik";
-                $data["mustahik"] = $mustahik->edit($id);
-                if (!$data["mustahik"]) {
+                $data["title"] = "Edit Penerimaan";
+                $data["terima"] = $terima->edit($id);
+                if (!$data["terima"]) {
                     show_404();
                 } else {
-                    $this->template->load('template', 'mustahik/edit', $data);
+                    $this->template->load('template', 'terima/edit', $data);
                 }
             }
         }
@@ -63,9 +63,9 @@ class Mustahik extends CI_Controller
         if ($id == null) {
             show_404();
         } else {
-            $this->Mustahik_model->destroy($id);
+            $this->Terima_model->destroy($id);
             $this->session->set_flashdata('message', '<script> alert("Data Berhasil Dihapus"); </script>');
-            redirect("mustahik");
+            redirect("terima");
         }
     }
 }

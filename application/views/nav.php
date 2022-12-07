@@ -9,6 +9,12 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
+            <li class="nav-item <?= $title == 'Data Penerimaan' ? 'active' : '' ?>">
+                <a class="nav-link" href="<?= base_url('terima'); ?>">Penerimaan</a>
+            </li>
+            <li class="nav-item <?= $title == 'Data Penyaluran' ? 'active' : '' ?>">
+                <a class="nav-link" href="<?= base_url('salur'); ?>">Penyaluran</a>
+            </li>
             <li class="nav-item <?= $title == 'Data Murid' ? 'active' : '' ?>">
                 <a class="nav-link" href="<?= base_url('murid'); ?>">Murid</a>
             </li>
