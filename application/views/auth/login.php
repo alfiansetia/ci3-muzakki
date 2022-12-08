@@ -8,30 +8,45 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" type="text/css" href="<?= base_url('assets/Bootstrap-4-4.6.0/css/bootstrap.min.css') ?>" />
+    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/style.css') ?>" />
 
     <title><?= $title ?></title>
 </head>
 
-<body>
-    <div class="container">
-        <div class="card mx-auto mt-5" style="max-width: 540px;">
-            <div class="card-header">
-                Silahkan Login
+<!-- <body> -->
+
+<body class="hold-transition login-page" style="background: url('<?= base_url('assets/images/bg.svg') ?>')">
+    <div class="login-box">
+        <div class="login-logo">
+            <a><img src="<?= base_url('assets/images/logo-depag.png') ?>" width="100px"></a>
+        </div>
+        <div class="card">
+            <div class="card-header text-center" style="background: #034a0a;color: #fff;">
+                SILAHKAN LOGIN
             </div>
-            <div class="card-body">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Masukkan username & password anda</p>
                 <form method="POST" action="<?= base_url('login') ?>">
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" class="form-control" id="email" placeholder="Masukkan Email" value="<?= set_value('email') ?>" autofocus>
+                    <div class="form-group mb-3">
+                        <input id="email" type="email" class="form-control " name="email" value="<?= set_value('email') ?>" autocomplete="email" autofocus placeholder="Email">
                         <small class="form-text text-danger"><?php echo form_error('email') ?></small>
                     </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" class="form-control" id="password" placeholder="Masukkan Password" value="<?= set_value('password') ?>">
+
+                    <div class="form-group mb-3">
+                        <input id="password" type="password" class="form-control " name="password" autocomplete="current-password" placeholder="Password">
                         <small class="form-text text-danger"><?php echo form_error('password') ?></small>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-success btn-block">Sign In</button>
+                        </div>
+                    </div>
                 </form>
+                <hr>
+                <p class="mt-2 text-center">
+                    <a href="<?= base_url('') ?>">Kembali halaman utama</a> <br>
+                    Copyright &copy; <?= date('Y') ?>
+                </p>
             </div>
         </div>
     </div>

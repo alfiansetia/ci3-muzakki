@@ -16,7 +16,7 @@ class Login extends CI_Controller
         if ($this->session->userdata('email')) {
             redirect('dashboard');
         }
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|callback_email_check');
         $this->form_validation->set_rules('password', 'Password', 'required|trim');
         $this->form_validation->set_message('required', '%s Tidak boleh kosong, Silahkan isi.');
         $this->form_validation->set_message('valid_email', '%s Tidak benar, Silahkan Perbaiki.');
@@ -27,6 +27,17 @@ class Login extends CI_Controller
         } else {
             $this->_login();
         }
+    }
+
+    function email_check($email = null)
+    {
+            $user = $this->User_model->getByEmail($email);
+            if (!$user) {
+                $this->form_validation->set_message('email_check', '%s Email tidak terdaftar di system !');
+                return FALSE;
+            } else {
+                return TRUE;
+            }
     }
 
     private function _login()

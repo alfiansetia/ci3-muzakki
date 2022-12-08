@@ -8,7 +8,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav mr-auto">
             <li class="nav-item <?= $title == 'Dashboard' ? 'active' : '' ?>">
                 <a class="nav-link" href="<?= base_url('dashboard'); ?>">Dashboard</a>
             </li>
@@ -27,10 +27,17 @@
                     <a class="dropdown-item <?= $title == 'Data Mustahik' ? 'active' : '' ?>" href="<?= base_url('mustahik'); ?>">Mustahik</a>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="btn btn-sm btn-danger" href="<?= base_url('login/logout'); ?>" onclick="return confirm('Apakah yakin ingin logout ?');">Logout</a>
-            </li>
 
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                    <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="30" height="30" class="rounded-circle">
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="<?= base_url('muzakki'); ?>">Muzakki</a>
+                    <a class="dropdown-item" href="<?= base_url('mustahik'); ?>">Mustahik</a>
+                    <a class="dropdown-item" href="<?= base_url('login/logout'); ?>" onclick="return confirm('Apakah yakin ingin logout ?');">Logout</a>
+                </div>
+            </li>
         </ul>
     </div>
 </nav>
