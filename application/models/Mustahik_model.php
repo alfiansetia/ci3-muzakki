@@ -11,7 +11,10 @@ class Mustahik_model extends CI_Model
             [
                 'field' => 'nama',
                 'label' => 'Nama',
-                'rules' => 'trim|required'
+                'rules' => 'trim|required',
+                'errors' => array(
+                    'required'    => '%s Tidak boleh kosong, Silahkan isi.!',
+                )
             ],
             [
                 'field' => 'alamat',

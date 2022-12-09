@@ -31,13 +31,13 @@ class Login extends CI_Controller
 
     function email_check($email = null)
     {
-            $user = $this->User_model->getByEmail($email);
-            if (!$user) {
-                $this->form_validation->set_message('email_check', '%s Email tidak terdaftar di system !');
-                return FALSE;
-            } else {
-                return TRUE;
-            }
+        $user = $this->User_model->getByEmail($email);
+        if (!$user) {
+            $this->form_validation->set_message('email_check', '%s Email tidak terdaftar di system !');
+            return FALSE;
+        } else {
+            return TRUE;
+        }
     }
 
     private function _login()

@@ -11,17 +11,26 @@ class Terima_model extends CI_Model
             [
                 'field' => 'muzakki',
                 'label' => 'Muzakki',
-                'rules' => 'trim|required'
+                'rules' => 'trim|required',
+                'errors' => array(
+                    'required'    => '%s Tidak boleh kosong, Silahkan isi.!',
+                )
             ],
             [
                 'field' => 'tgl',
                 'label' => 'Tanggal',
-                'rules' => 'trim|required'
+                'rules' => 'trim|required',
+                'errors' => array(
+                    'required'    => '%s Tidak boleh kosong, Silahkan isi.!',
+                )
             ],
             [
                 'field' => 'total',
                 'label' => 'Total',
-                'rules' => 'trim|required'
+                'rules' => 'trim|required',
+                'errors' => array(
+                    'required'    => '%s Tidak boleh kosong, Silahkan isi.!',
+                )
             ],
             [
                 'field' => 'jenis',

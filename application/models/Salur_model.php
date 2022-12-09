@@ -11,17 +11,26 @@ class Salur_model extends CI_Model
             [
                 'field' => 'mustahik',
                 'label' => 'Mustahik',
-                'rules' => 'trim|required'
+                'rules' => 'trim|required',
+                'errors' => array(
+                    'required'    => '%s Tidak boleh kosong, Silahkan isi.!',
+                )
             ],
             [
                 'field' => 'tgl',
                 'label' => 'Tanggal',
-                'rules' => 'trim|required'
+                'rules' => 'trim|required',
+                'errors' => array(
+                    'required'    => '%s Tidak boleh kosong, Silahkan isi.!',
+                )
             ],
             [
                 'field' => 'total',
                 'label' => 'Total',
-                'rules' => 'trim|required'
+                'rules' => 'trim|required',
+                'errors' => array(
+                    'required'    => '%s Tidak boleh kosong, Silahkan isi.!',
+                )
             ],
             [
                 'field' => 'jenis',
@@ -36,7 +45,10 @@ class Salur_model extends CI_Model
             [
                 'field' => 'validasi',
                 'label' => 'Validasi',
-                'rules' => 'trim|required'
+                'rules' => 'trim|required',
+                'errors' => array(
+                    'required'    => '%s Tidak boleh kosong, Silahkan isi.!',
+                )
             ],
         ];
     }

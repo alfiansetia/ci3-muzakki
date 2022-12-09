@@ -11,17 +11,68 @@ class User_model extends CI_Model
             [
                 'field' => 'nama',
                 'label' => 'Nama',
-                'rules' => 'trim|required'
+                'rules' => 'trim|required',
+                'errors' => array(
+                    'required' => '%s  Tidak boleh kosong, Silahkan isi.!'
+                )
             ],
             [
-                'field' => 'nip',
-                'label' => 'NIP',
-                'rules' => 'trim|required'
+                'field' => 'email',
+                'label' => 'Email',
+                'rules' => 'trim|required|valid_email|is_unique[user.email]',
+                'errors' => array(
+                    'required'    => '%s Tidak boleh kosong, Silahkan isi.!',
+                    'valid_email' => '%s tidak valid, Masukkan email yang valid.!',
+                    'is_unique'   => '%s sudah dipakai, Masukkan email yang lain.!',
+                )
             ],
             [
-                'field' => 'alamat',
-                'label' => 'Alamat',
-                'rules' => 'trim|required'
+                'field' => 'password',
+                'label' => 'Password',
+                'rules' => 'trim|required',
+                'errors' => array(
+                    'required'    => '%s Tidak boleh kosong, Silahkan isi.!',
+                )
+            ],
+            [
+                'field' => 'role',
+                'label' => 'Role',
+                'rules' => 'trim|required',
+                'errors' => array(
+                    'required'    => '%s Tidak boleh kosong, Silahkan isi.!',
+                )
+            ],
+        ];
+    }
+
+    public function rulesUpdate($id)
+    {
+        return [
+            [
+                'field' => 'nama',
+                'label' => 'Nama',
+                'rules' => 'trim|required',
+                'errors' => array(
+                    'required'    => '%s Tidak boleh kosong, Silahkan isi.!',
+                )
+            ],
+            [
+                'field' => 'email',
+                'label' => 'Email',
+                'rules' => 'trim|required|valid_email|callback_email_check',
+                'errors' => array(
+                    'required'     => '%s Tidak boleh kosong, Silahkan isi.!',
+                    'valid_email'  => '%s tidak valid, Masukkan email yang valid.!',
+                    'email_check'  => '%s sudah dipakai, Masukkan email yang lain.!',
+                )
+            ],
+            [
+                'field' => 'role',
+                'label' => 'Role',
+                'rules' => 'trim|required',
+                'errors' => array(
+                    'required'    => '%s Tidak boleh kosong, Silahkan isi.!',
+                )
             ],
         ];
     }
@@ -41,12 +92,18 @@ class User_model extends CI_Model
         return $this->db->get_where($this->table, ["email" => $email])->row();
     }
 
+    public function emailCheck($email)
+    {
+        return $this->db->get_where($this->table, ['email' => $email, "id !=" => $this->uri->segment(3)])->row();
+    }
+
     public function store()
     {
         $post = $this->input->post();
         $data = [
             'nama'      => $post['nama'],
             'email'     => $post['email'],
+            'role'      => $post['role'],
             'password'  => password_hash($post['password'], PASSWORD_DEFAULT),
         ];
         return $this->db->insert($this->table, $data);
@@ -58,6 +115,18 @@ class User_model extends CI_Model
         $data = [
             'nama'      => $post['nama'],
             'email'     => $post['email'],
+            'role'      => $post['role'],
+        ];
+        if ($post['password'] != '') {
+            $this->updatePassword($id);
+        }
+        return $this->db->update($this->table, $data, ['id' => $id]);
+    }
+
+    public function updatePassword($id)
+    {
+        $post = $this->input->post();
+        $data = [
             'password'  => password_hash($post['password'], PASSWORD_DEFAULT),
         ];
         return $this->db->update($this->table, $data, ['id' => $id]);
