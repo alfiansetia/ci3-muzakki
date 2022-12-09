@@ -18,13 +18,14 @@
             <li class="nav-item <?= $title == 'Data Penyaluran' ? 'active' : '' ?>">
                 <a class="nav-link" href="<?= base_url('salur'); ?>">Penyaluran</a>
             </li>
-            <li class="nav-item dropdown <?= $title == 'Data Muzakki' || $title == 'Data Mustahik' ? 'active' : '' ?>">
+            <li class="nav-item dropdown <?= $title == 'Data Muzakki' || $title == 'Data Mustahik' || $title == 'Data User' ? 'active' : '' ?>">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                     Data
                 </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item <?= $title == 'Data Muzakki' ? 'active' : '' ?>" href="<?= base_url('muzakki'); ?>">Muzakki</a>
                     <a class="dropdown-item <?= $title == 'Data Mustahik' ? 'active' : '' ?>" href="<?= base_url('mustahik'); ?>">Mustahik</a>
+                    <a class="dropdown-item <?= $title == 'Data User' ? 'active' : '' ?>" href="<?= base_url('user'); ?>">User</a>
                 </div>
             </li>
 
@@ -33,8 +34,8 @@
                     <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="30" height="30" class="rounded-circle">
                 </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="<?= base_url('muzakki'); ?>">Muzakki</a>
-                    <a class="dropdown-item" href="<?= base_url('mustahik'); ?>">Mustahik</a>
+                    <a class="dropdown-item" href="#">Profile</a>
+                    <a class="dropdown-item" href="#">Password</a>
                     <a class="dropdown-item" href="<?= base_url('login/logout'); ?>" onclick="return confirm('Apakah yakin ingin logout ?');">Logout</a>
                 </div>
             </li>
