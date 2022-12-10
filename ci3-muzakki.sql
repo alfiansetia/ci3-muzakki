@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 08 Des 2022 pada 00.35
+-- Waktu pembuatan: 10 Des 2022 pada 16.04
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 8.0.12
 
@@ -163,7 +163,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `nama`, `email`, `password`, `role`) VALUES
-(1, 'alfi', 'admin@gmail.com', '$2y$10$dtd/Naip7yHYDsFFbqceUuNabwjg5ChZzNRFQBdItH0sJCbslgjYm', 'admin');
+(1, 'alfi', 'admin@gmail.com', '$2y$10$D2oPaGYMpTgv8KAheq12yu891biL6OmnSbUX5ZitsJ8Yh948R6z3y', 'admin'),
+(3, 'kentang12', 'admin1@gmail.com', '$2y$10$kcnGDoHu8NqOw/B9v6cB6.2MFCCPJSEiNjdycZjhf.j21UOiMYjnu', 'user'),
+(4, 'alfi', 'alfian.setia100@gmail.com', '$2y$10$s5aHob31fH4PJMfB/vB8Teshs9FYNHxibMttgX86iAGff8CszEP7K', 'user');
 
 --
 -- Indexes for dumped tables
@@ -245,7 +247,7 @@ ALTER TABLE `terima`
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
