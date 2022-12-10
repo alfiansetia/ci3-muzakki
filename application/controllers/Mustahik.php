@@ -9,7 +9,7 @@ class Mustahik extends CI_Controller
         if (!$this->session->userdata('email')) {
             redirect('login');
         }
-        $this->load->model("Mustahik_model");
+        $this->load->model(["Mustahik_model"]);
     }
 
     public function index()

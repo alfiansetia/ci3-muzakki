@@ -58,10 +58,10 @@ class User extends CI_Controller
         }
     }
 
-    public function email_check($email= null)
+    public function email_check($email = null)
     {
         $data = $this->User_model->emailCheck($email);
-        if ($data) { 
+        if ($data) {
             return FALSE;
         } else {
             return TRUE;

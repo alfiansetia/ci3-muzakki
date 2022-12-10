@@ -16,6 +16,7 @@ class Terima extends CI_Controller
     {
         $data["title"] = "Data Penerimaan";
         $data["terima"] = $this->Terima_model->get_join();
+        
         $this->template->load('template', 'terima/index', $data);
     }
 
@@ -31,6 +32,7 @@ class Terima extends CI_Controller
         }
         $data["title"] = "Tambah Penerimaan";
         $data["muzakki"] = $this->Muzakki_model->get();
+        
         $this->template->load('template', 'terima/add', $data);
     }
 
@@ -51,6 +53,7 @@ class Terima extends CI_Controller
                 $data["title"] = "Edit Penerimaan";
                 $data["terima"] = $terima->edit($id);
                 $data["muzakki"] = $this->Muzakki_model->get();
+                
                 if (!$data["terima"]) {
                     show_404();
                 } else {

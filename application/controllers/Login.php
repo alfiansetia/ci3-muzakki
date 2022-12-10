@@ -51,6 +51,7 @@ class Login extends CI_Controller
                 $data = [
                     'login' => true,
                     'id'    => $user->id,
+                    'nama'  => $user->nama,
                     'email' => $user->email,
                     'role'  => $user->role,
                 ];

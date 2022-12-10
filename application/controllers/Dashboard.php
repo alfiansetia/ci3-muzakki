@@ -15,6 +15,7 @@ class Dashboard extends CI_Controller
     public function index()
     {
         $data['title'] = 'Dashboard';
+        $data['user'] = $this->User_model->edit($this->session->userdata('id'));
         if ($this->session->userdata('role') == 'admin') {
             $this->template->load('template','dashboard/admin', $data);
         } else {

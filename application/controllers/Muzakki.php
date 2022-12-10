@@ -9,7 +9,7 @@ class Muzakki extends CI_Controller
         if (!$this->session->userdata('email')) {
             redirect('login');
         }
-        $this->load->model("Muzakki_model");
+        $this->load->model(["Muzakki_model"]);
     }
 
     public function index()
