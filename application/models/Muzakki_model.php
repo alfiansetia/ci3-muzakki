@@ -29,6 +29,10 @@ class Muzakki_model extends CI_Model
         ];
     }
 
+    public function countAll(){
+        return $this->db->count_all($this->table);
+    }
+
     public function get()
     {
         return $this->db->get($this->table)->result();

@@ -9,17 +9,20 @@ class Dashboard extends CI_Controller
         if (!$this->session->userdata('email')) {
             redirect('login');
         }
-        $this->load->model(['User_model']);
+        $this->load->model(['User_model', 'Muzakki_model', 'Mustahik_model', 'User_model']);
     }
 
     public function index()
     {
         $data['title'] = 'Dashboard';
-        $data['user'] = $this->User_model->edit($this->session->userdata('id'));
-        if ($this->session->userdata('role') == 'admin') {
-            $this->template->load('template','dashboard/admin', $data);
-        } else {
-            $this->template->load('template','dashboard/user', $data);
-        }
+        $data['muzakki'] = $this->Muzakki_model->countAll();
+        $data['mustahik'] = $this->Mustahik_model->countAll();
+        $data['user_admin'] = $this->User_model->countAdmin();
+        $data['user_user'] = $this->User_model->countUser();
+        // if ($this->session->userdata('role') == 'admin') {
+        $this->template->load('template', 'dashboard/admin', $data);
+        // } else {
+        // $this->template->load('template','dashboard/user', $data);
+        // }
     }
 }

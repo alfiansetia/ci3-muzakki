@@ -77,6 +77,24 @@ class User_model extends CI_Model
         ];
     }
 
+    public function countAdmin()
+    {
+        // $this->db->get_where($this->table, ["role" => 'admin']);
+        $this->db->from($this->table);
+        $this->db->where('role', 'admin');
+        return $this->db->count_all_results();
+        return $this->db->count_all_results();
+    }
+
+    public function countUser()
+    {
+        // $this->db->get_where($this->table, ["role" => 'user']);
+
+        $this->db->from($this->table);
+        $this->db->where('role', 'user');
+        return $this->db->count_all_results();
+    }
+
     public function get()
     {
         return $this->db->get($this->table)->result();
