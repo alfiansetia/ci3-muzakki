@@ -83,7 +83,7 @@
                 </a>
                 <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
                     <li class="dropdown-divider"></li>
-                    <li><a href="#" class="dropdown-item">Profile</a></li>
+                    <li><a href="<?= base_url('settings/profile') ?>" class="dropdown-item">Profile</a></li>
                     <li class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="<?= base_url('login/logout'); ?>" onclick="return confirm('Apakah yakin ingin logout ?');">Logout</a></li>
                     <li class="dropdown-divider"></li>

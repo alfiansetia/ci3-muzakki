@@ -32,7 +32,7 @@
             <div class="small-box bg-danger">
                 <div class="inner">
                     <h3><?= $user_user ?></h3>
-                    <p>User</p>
+                    <p>User Biasa</p>
                 </div>
                 <a href="<?= base_url('user') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
